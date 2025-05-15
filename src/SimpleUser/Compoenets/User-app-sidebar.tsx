@@ -1,5 +1,5 @@
 import { LayoutDashboard, MessageSquareText, User } from "lucide-react";
-import { File } from "lucide-react";
+// import { File } from "lucide-react";
 import { ClipboardList } from "lucide-react";
 
 import {
@@ -20,7 +20,7 @@ import { useUserContext } from "@/context/UserContext";
 export function UserAppSidebar() {
   const navigate = useNavigate();
 
-  const { name, email, img, admin } = useUserContext();
+  const { name, email, img} = useUserContext();
 
   const isadmin = localStorage.getItem("admin");
   console.log(isadmin);

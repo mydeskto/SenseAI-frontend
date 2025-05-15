@@ -14,7 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useUserContext } from "../context/UserContext";
 import logo from '../assets/logo.png'
 // import { useSearchParams } from "react-router-dom";
-import profile from '../assets/profile-pic.jpg'
+// import profile from '../assets/profile-pic.jpg'
 // import { useLocation, useNavigate } from "react-router-dom";
 import { Switch } from '@headlessui/react'; // Add this import at the top
 import { MessageCircle } from 'lucide-react';
@@ -46,15 +46,15 @@ interface Message {
   isLoading?: boolean;
 }
 
-interface UserContextType {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-  inDoc: boolean;
-  setInDoc: (inDoc: boolean) => void;
-  conversationId1: string | null;
-}
+// interface UserContextType {
+//   open: boolean;
+//   setOpen: (open: boolean) => void;
+//   isOpen: boolean;
+//   setIsOpen: (isOpen: boolean) => void;
+//   inDoc: boolean;
+//   setInDoc: (inDoc: boolean) => void;
+//   conversationId1: string | null;
+// }
 
 // Add error interface
 interface ApiError {
@@ -66,15 +66,15 @@ interface ApiError {
   message: string;
 }
 
-interface MessageBoxWidths {
-  [key: number]: number;
-}
+// interface MessageBoxWidths {
+//   [key: number]: number;
+// }
 
 const UserChatContent: React.FC = () => {
   const { conversationId: routeConversationId } = useParams<{ conversationId: any }>();
   
   const [conversationId, setConversationId] = useState<string | null>(null);
-  const { open, setOpen, isOpen, setIsOpen,  setIsLogin ,name , img,  setInDoc, allowChat} = useUserContext();
+  const { open, setOpen,  setIsLogin ,name , img,  setInDoc, allowChat} = useUserContext();
   const [inputValue, setInputValue] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [showWelcome, setShowWelcome] = useState<boolean>(true);
@@ -82,9 +82,9 @@ const UserChatContent: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
   const [userN, setUserN] = useState<string>("");
-  const [userId, setUserId] = useState<string>("");
+  // const [userId, setUserId] = useState<string>("");
   const messageRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
-  const [messageBoxWidths, setMessageBoxWidths] = useState<MessageBoxWidths>({});
+  // const [messageBoxWidths, setMessageBoxWidths] = useState<MessageBoxWidths>({});
   const [jfile, setjFile] = useState<File | null>(null);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -151,7 +151,7 @@ const UserChatContent: React.FC = () => {
       
     }
     setUserN(user);
-    setUserId(userId);
+    // setUserId(userId);
   }, []);
 
   useEffect(() => {
@@ -630,9 +630,11 @@ const UserChatContent: React.FC = () => {
                               <span
                                 className="flex flex-row items-center justify-between"
                                 style={{
-                                  width: messageBoxWidths[message.id]
-                                    ? `${messageBoxWidths[message.id]}px`
-                                    : "auto",
+                                  width:
+                                  //  messageBoxWidths[message.id]
+                                  //   ? `${messageBoxWidths[message.id]}px`
+                                  //   :
+                                     "auto",
                                 }}
                               >
                                 <span className="text-sm">{name}</span>
@@ -647,9 +649,11 @@ const UserChatContent: React.FC = () => {
                               <span
                                 className="flex flex-row gap-2 items-center justify-between"
                                 style={{
-                                  width: messageBoxWidths[message.id]
-                                    ? `${messageBoxWidths[message.id]}px`
-                                    : "auto",
+                                  width:
+                                  //  messageBoxWidths[message.id]
+                                  //   ? `${messageBoxWidths[message.id]}px`
+                                  //   :
+                                     "auto",
                                 }}
                               >
                                 <span className="text-sm">

@@ -14,7 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useUserContext } from "../context/UserContext";
 import logo from '../assets/logo.png'
 // import { useSearchParams } from "react-router-dom";
-import profile from '../assets/profile-pic.jpg'
+// import profile from '../assets/profile-pic.jpg'
 // import { useLocation, useNavigate } from "react-router-dom";
 import { Switch } from '@headlessui/react'; // Add this import at the top
 import { MessageCircle } from 'lucide-react';
@@ -53,7 +53,7 @@ const ChatContent: React.FC = () => {
   const { conversationId: routeConversationId } = useParams<{ conversationId: any }>();
   
   const [conversationId, setConversationId] = useState<string | null>(null);
-  const { open, setOpen, isOpen, setIsOpen,  setIsLogin ,name , img, inDoc, setInDoc, conversationId1 } = useUserContext();
+  const { open, setOpen,   setIsLogin ,name , img, setInDoc } = useUserContext();
   const [inputValue, setInputValue] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [showWelcome, setShowWelcome] = useState<boolean>(true);

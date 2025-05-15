@@ -7,6 +7,8 @@ import { ClipLoader } from "react-spinners";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -28,9 +30,11 @@ import {
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
-import { MoreHorizontal, Upload, Trash2 } from "lucide-react";
+import { MoreHorizontal, Upload, FileText, Trash2 } from "lucide-react";
 import {
   Tabs,
   TabsContent,
