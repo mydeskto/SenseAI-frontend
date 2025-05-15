@@ -36,13 +36,10 @@ interface User {
   name: string;
   lastName: string | null;
   email: string;
-  img: string | null;
   userType: string;
   createdAt: string;
-  updatedAt: string;
-  isAllowChat: boolean; // Fix capitalization
+  isAllowChat: boolean;
   isAllowDoc: boolean;
-  deletedAt: string | null;
 }
 
 const OrgAllUsers = () => {

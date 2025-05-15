@@ -4,19 +4,11 @@ import { LuDot } from "react-icons/lu";
 import { FaRegFileAlt } from "react-icons/fa";
 import { useUserContext } from "../../context/UserContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import {toast }from "sonner";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+
 
 interface Document {
   documentid: string;
@@ -45,7 +37,7 @@ const OrgListDocuments: React.FC = () => {
 
   const [jfile, setjFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

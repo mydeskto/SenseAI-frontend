@@ -5,8 +5,8 @@ import Login from "./components/component/Pages/login";
 import ChatContent from "./components/ChatContent";
 import ListDocuments from "./components/ListDocuments";
 import Dashboard from "./components/component/Pages/Dashboard";
-import Settings from "./components//component/Settings";
-import { Toaster } from 'sonner'
+import Settings from "./components/component/Settings";
+import { Toaster } from 'sonner';
 import AllUsers from "./components/component/Pages/AllUsers";
 import MainSettings from "./components/component/Pages/MainSettings";
 import UserHome from "./SimpleUser/UserHome";

@@ -13,10 +13,10 @@ const OrgDashboard: React.FC = () => {
   const [conversationCount, setConversationCount] = useState<number>(0);
   const [UserCount, setUserCount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
-  const [userData, setUserData] = useState(null);
-  const [simpleUserCount, setSimpleUserCount] = useState<number>(0);
-  const [adminUserCount, setAdminUserCount] = useState<number>(0);
-  const [managementUserCount, setManagementUserCount] = useState<number>(0);
+  // const [userData, setUserData] = useState(null);
+  // const [simpleUserCount, setSimpleUserCount] = useState<number>(0);
+  // const [adminUserCount, setAdminUserCount] = useState<number>(0);
+  // const [managementUserCount, setManagementUserCount] = useState<number>(0);
 
   // Fetch documents and count them
   const fetchDocuments = async () => {
@@ -62,7 +62,7 @@ const OrgDashboard: React.FC = () => {
                 }
             }
         );
-        setUserData(response.data);
+        // setUserData(response.data);
         console.log("User data:", response.data);
         setName(response.data.user.name);
         setEmail(response.data.user.email);
@@ -190,9 +190,9 @@ const OrgDashboard: React.FC = () => {
       
       // Count different user types
 
-        setSimpleUserCount(users.filter((user: User) => user.userType === 'usr').length || 0);
-        setAdminUserCount(users.filter((user: User) => user.userType === 'adm').length || 0);
-        setManagementUserCount(users.filter((user: User) => user.userType === 'mgm').length || 0);
+        // setSimpleUserCount(users.filter((user: User) => user.userType === 'usr').length || 0);
+        // setAdminUserCount(users.filter((user: User) => user.userType === 'adm').length || 0);
+        // setManagementUserCount(users.filter((user: User) => user.userType === 'mgm').length || 0);
       
     } catch (error) {
       console.error("Error fetching users:", error);

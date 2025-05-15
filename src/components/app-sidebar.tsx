@@ -1,9 +1,4 @@
-import { LayoutDashboard, MessageSquareText, User } from 'lucide-react';
-import { Settings } from 'lucide-react';
-import { File } from 'lucide-react';
-import { Users } from 'lucide-react';
-import { ClipboardList } from 'lucide-react';
-
+import { LayoutDashboard, MessageSquareText, User, Settings, File, Users, ClipboardList } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,

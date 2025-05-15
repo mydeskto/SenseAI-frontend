@@ -490,28 +490,6 @@ const UserChatContent: React.FC = () => {
     setInputValue(e.target.value);
   };
 
-  // const CustomCodeBlock: React.FC<{
-  //   node?: any;
-  //   inline?: boolean;
-  //   className?: string;
-  //   children: any;
-  // }> = ({ node, inline, className, children, ...props }) => {
-  //   const match = /language-(\w+)/.exec(className || "");
-  //   return !inline && match ? (
-  //     <SyntaxHighlighter
-  //       style={atomDark}
-  //       language={match[1]}
-  //       PreTag="div"
-  //       {...props}
-  //     >
-  //       {String(children).replace(/\n$/, "")}
-  //     </SyntaxHighlighter>
-  //   ) : (
-  //     <code className={className} {...props}>
-  //       {children}
-  //     </code>
-  //   );
-  // };
 
   type CodeProps = {
     node?: any;

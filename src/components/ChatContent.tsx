@@ -36,17 +36,6 @@ interface Message {
   isLoading?: boolean;
 }
 
-interface UserContextType {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-  inDoc: boolean;
-  setInDoc: (inDoc: boolean) => void;
-  conversationId1: string | null;
-}
-
-// Add error interface
 interface ApiError {
   response?: {
     data?: {

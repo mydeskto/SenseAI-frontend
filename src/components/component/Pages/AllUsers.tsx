@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import { BsThreeDots, BsSearch, BsCheckCircleFill, BsXCircleFill } from "react-icons/bs";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import {
   Dialog,
   DialogContent,
@@ -58,6 +59,7 @@ const AllUsers = () => {
     email: "",
     password: "",
     userType: "",
+    userId: localStorage.getItem("userId") || ""
   });
 
   const fetchUsers = async (page = 1, search = "") => {
@@ -119,32 +121,42 @@ const AllUsers = () => {
       alert("Failed to delete user. Please try again.");
     }
   };
-
   const handleCreateUser = async () => {
     try {
       const token = localStorage.getItem("token");
+      const userId = localStorage.getItem("userId");
+      
       const response = await axios.post(
         "http://localhost:3000/api/create-user",
-        formData,
+        { ...formData, userId },
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log("User created:", formData);
-      // Refresh users list
-      fetchUsers();
-      setIsOpen(false);
-      setFormData({
-        name: "",
-        lastName: "",
-        email: "",
-        password: "",
-        userType: "",
-      });
-    } catch (error) {
+      
+      if (response.data.status === "ok" || response.status === 200) {
+        toast.success("User created successfully!");
+        // Refresh users list
+        fetchUsers();
+        setIsOpen(false);
+        setFormData({
+          name: "",
+          lastName: "",
+          email: "",
+          password: "",
+          userType: "",
+          userId: localStorage.getItem("userId") || ""
+        });
+      }
+    } catch (error: any) {
       console.error("Error creating user:", error);
+      toast.error(
+        error.response?.data?.message || 
+        error.response?.data?.error || 
+        "Failed to create user. Please try again."
+      );
     }
   };
   const filteredUsers = users.filter(

@@ -14,17 +14,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useUserContext } from "../context/UserContext";
 import logo from '../assets/logo.png'
 // import { useSearchParams } from "react-router-dom";
-import profile from '../assets/profile-pic.jpg'
-// import { useLocation, useNavigate } from "react-router-dom";
-import { Switch } from '@headlessui/react'; // Add this import at the top
+// import profile from '../assets/profile-pic.jpg'
+import { Switch } from '@headlessui/react';
 import { MessageCircle } from 'lucide-react';
-import type  { FC } from "react";
+import type { FC } from "react";
 import type { ReactNode } from "react";
-
-
-
-
-import axios from "axios"; // Added missing axios import
+import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 // Type definitions
 interface Message {
@@ -36,15 +31,15 @@ interface Message {
   isLoading?: boolean;
 }
 
-interface UserContextType {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-  inDoc: boolean;
-  setInDoc: (inDoc: boolean) => void;
-  conversationId1: string | null;
-}
+// interface UserContextType {
+//   open: boolean;
+//   setOpen: (open: boolean) => void;
+//   isOpen: boolean;
+//   setIsOpen: (isOpen: boolean) => void;
+//   inDoc: boolean;
+//   setInDoc: (inDoc: boolean) => void;
+//   conversationId1: string | null;
+// }
 
 // Add error interface
 interface ApiError {
@@ -56,15 +51,15 @@ interface ApiError {
   message: string;
 }
 
-interface MessageBoxWidths {
-  [key: number]: number;
-}
+// interface MessageBoxWidths {
+//   [key: number]: number;
+// }
 
 const OrgChatContent: React.FC = () => {
   const { conversationId: routeConversationId } = useParams<{ conversationId: any }>();
   
   const [conversationId, setConversationId] = useState<string | null>(null);
-  const { open, setOpen, isOpen, setIsOpen,  setIsLogin ,name , img, inDoc, setInDoc, conversationId1 } = useUserContext();
+  const { open, setOpen,   setIsLogin ,name , img,  setInDoc } = useUserContext();
   const [inputValue, setInputValue] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [showWelcome, setShowWelcome] = useState<boolean>(true);
@@ -72,9 +67,9 @@ const OrgChatContent: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
   const [userN, setUserN] = useState<string>("");
-  const [userId, setUserId] = useState<string>("");
+  // const [userId, setUserId] = useState<string>("");
   const messageRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
-  const [messageBoxWidths, setMessageBoxWidths] = useState<MessageBoxWidths>({});
+  // const [messageBoxWidths, setMessageBoxWidths] = useState<MessageBoxWidths>({});
   const [jfile, setjFile] = useState<File | null>(null);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -140,7 +135,7 @@ const OrgChatContent: React.FC = () => {
       
     }
     setUserN(user);
-    setUserId(userId);
+    // setUserId(userId);
   }, []);
 
   useEffect(() => {
@@ -479,28 +474,6 @@ const OrgChatContent: React.FC = () => {
     setInputValue(e.target.value);
   };
 
-  // const CustomCodeBlock: React.FC<{
-  //   node?: any;
-  //   inline?: boolean;
-  //   className?: string;
-  //   children: any;
-  // }> = ({ node, inline, className, children, ...props }) => {
-  //   const match = /language-(\w+)/.exec(className || "");
-  //   return !inline && match ? (
-  //     <SyntaxHighlighter
-  //       style={atomDark}
-  //       language={match[1]}
-  //       PreTag="div"
-  //       {...props}
-  //     >
-  //       {String(children).replace(/\n$/, "")}
-  //     </SyntaxHighlighter>
-  //   ) : (
-  //     <code className={className} {...props}>
-  //       {children}
-  //     </code>
-  //   );
-  // };
 
   type CodeProps = {
     node?: any;
@@ -605,9 +578,11 @@ const OrgChatContent: React.FC = () => {
                             <span
                               className="flex flex-row items-center justify-between"
                               style={{
-                                width: messageBoxWidths[message.id]
-                                  ? `${messageBoxWidths[message.id]}px`
-                                  : "auto",
+                                width:
+                                //  messageBoxWidths[message.id]
+                                //   ? `${messageBoxWidths[message.id]}px`
+                                //   :
+                                   "auto",
                               }}
                             >
                               <span className="text-sm">{name}</span>
@@ -622,9 +597,11 @@ const OrgChatContent: React.FC = () => {
                             <span
                               className="flex flex-row gap-2 items-center justify-between"
                               style={{
-                                width: messageBoxWidths[message.id]
-                                  ? `${messageBoxWidths[message.id]}px`
-                                  : "auto",
+                                width:
+                                //  messageBoxWidths[message.id]
+                                //   ? `${messageBoxWidths[message.id]}px`
+                                //   : 
+                                  "auto",
                               }}
                             >
                               <span className="text-sm">
