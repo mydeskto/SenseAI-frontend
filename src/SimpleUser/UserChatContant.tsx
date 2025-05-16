@@ -1004,7 +1004,7 @@ const ChatContent: React.FC = () => {
             className={`transition-all duration-300 whitespace-nowrap ${showArrow ? 'opacity-0 scale-90' : 'opacity-100 scale-100'}`}
             style={{ position: 'absolute' }}
           >
-            chat history
+            Chat History
           </span>
           <span
             className={`transition-all duration-300 ${showArrow ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
