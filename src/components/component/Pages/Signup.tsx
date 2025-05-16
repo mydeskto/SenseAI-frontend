@@ -16,7 +16,7 @@ const Signup = () => {
         checkToken()
       },[])
   return (
-    <div className='flex flex-row h-screen'>
+    <div className='flex flex-row h-screen '>
       <SidePage/>
       <SignupForm/>
     </div>

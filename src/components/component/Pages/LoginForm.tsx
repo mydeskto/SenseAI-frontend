@@ -3,7 +3,7 @@ import type { FormEvent } from "react";
 import {toast }from "sonner";
 import { Link, useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { useUserContext } from "../../../context/UserContext";// Import the custom hook
 
 const LoginForm = () => {
@@ -76,19 +76,23 @@ const LoginForm = () => {
       <div className="w-96 shadow-md rounded-xl p-6">
         <h1 className="text-2xl font-semibold text-center">Welcome</h1>
         <p className="text-center text-gray-500 pb-8">Create Your Account</p>
-        <form className="flex flex-col gap-4" onSubmit={loginUser}>          <div className="space-y-2">
+        <form className="flex flex-col gap-4" onSubmit={loginUser}>
+          <div className="space-y-2">
             <label htmlFor="email" className="font-semibold leading-0">
               Email
             </label>
-            <input
-              id="email"
-              type="email"
-              placeholder="example@gmail.com"
-              className="w-full border border-gray-300 p-2 rounded-lg"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <input
+                id="email"
+                type="email"
+                placeholder="example@gmail.com"
+                className="w-full border border-gray-300 p-2 rounded-lg pl-10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent hover:border-blue-400"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
           </div>
           
           <div className="space-y-2">
@@ -96,11 +100,12 @@ const LoginForm = () => {
               Password
             </label>
             <div className="relative">
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
                 id="password"
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter Your Password"
-                className="w-full border border-gray-300 p-2 rounded-lg pr-10"
+                className="w-full border border-gray-300 p-2 rounded-lg pl-10 pr-10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent hover:border-blue-400"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -124,9 +129,9 @@ const LoginForm = () => {
             <Link to='/forgot-password' className="text-blue-600 hover:underline cursor-pointer">Forgot Password?</Link>
           </span>
           </div>
-          <button
-            type="submit"
-            className="bg-gray-700 text-white p-2 rounded-xl cursor-pointer"
+          <button            type="submit"
+            className="w-full py-2.5 px-4 text-sm font-semibold text-center text-white bg-gray-400 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition-all duration-300 transform hover:scale-[1.02] shadow-md shadow-blue-500/50"
+            disabled={!email || !password}
           >
             {loading ? (
               <div className="flex justify-center items-center gap-2">
@@ -139,9 +144,7 @@ const LoginForm = () => {
         </form>
 
         <div className="flex flex-col items-center justify-center mt-1">
-          <p className="text-center p-4">OR CONTINUE WITH</p>
-
-          <p className="flex items-center gap-2 justify-center shadow-md shadow-gray-500 w-24 rounded-lg p-3">
+          <p className="text-center p-4">OR CONTINUE WITH</p>          <p className="flex items-center gap-2 justify-center shadow-md shadow-gray-500 w-24 rounded-lg p-3 hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] cursor-pointer">
             <i className="fa-regular fa-envelope"></i>Google
           </p>
 

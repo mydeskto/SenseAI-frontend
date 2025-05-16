@@ -8,8 +8,10 @@ import { PiScreencastDuotone } from "react-icons/pi";
 // import { PiEyesDuotone } from "react-icons/pi";
 import { IoIosMore } from "react-icons/io";
 import { IoMdSend } from "react-icons/io";
+import { FiDownload } from "react-icons/fi";
 import {toast }from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
+import jsPDF from 'jspdf';
 // import { CgProfile } from "react-icons/cg";
 import { useUserContext } from "../context/UserContext";
 import logo from '../assets/logo.png'
@@ -638,8 +640,7 @@ const ChatContent: React.FC = () => {
                             ? "bg-gray-100 text-black border-gray-400 animate-pulse"
                             : "bg-white text-black border-gray-400"
                         }`}
-                      >
-                        <div className="prose max-w-none">
+                      >                        <div className="prose max-w-none">
                           {message.isLoading ? (
                             <div className="flex items-center gap-2 text-black">
                               <span>Generating</span>
@@ -648,9 +649,40 @@ const ChatContent: React.FC = () => {
                               <span className="animate-bounce delay-200">.</span>
                             </div>
                           ) : (
-                            <ReactMarkdown components={{ code: CustomCodeBlock }}>
-                              {message.text}
-                            </ReactMarkdown>
+                            <div>
+                              <ReactMarkdown components={{ code: CustomCodeBlock }}>
+                                {message.text}
+                              </ReactMarkdown>
+                              {!message.isUser && (
+                                <div className="flex justify-end mt-2">
+                                  <motion.button
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.9 }}
+                                    onClick={() => {
+                                      const pdf = new jsPDF();
+                                      const title = "AI Response";
+                                      const timestamp = new Date().toLocaleString();
+                                      
+                                      pdf.setFontSize(16);
+                                      pdf.text(title, 20, 20);
+                                      
+                                      pdf.setFontSize(10);
+                                      pdf.text(`Generated on: ${timestamp}`, 20, 30);
+                                      
+                                      pdf.setFontSize(12);
+                                      const splitText = pdf.splitTextToSize(message.text, 170);
+                                      pdf.text(splitText, 20, 40);
+                                      
+                                      pdf.save(`ai_response_${Date.now()}.pdf`);
+                                      toast.success("PDF downloaded successfully!");
+                                    }}
+                                    className="text-gray-500 hover:text-gray-700"
+                                  >
+                                    <FiDownload size={16} />
+                                  </motion.button>
+                                </div>
+                              )}
+                            </div>
                           )}
                         </div>
                       </div>

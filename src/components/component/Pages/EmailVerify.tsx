@@ -47,7 +47,7 @@ const EmailVerify: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="mb-8"
       >
-        <img src={logo} alt="Logo" className="w-32 h-32 rounded-2xl" />
+        <img src={logo} alt="Logo" className="w-28 h-28 rounded-3xl" />
       </motion.div>
 
       <motion.div
