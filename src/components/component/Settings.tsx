@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -21,7 +21,7 @@ const Settings = () => {
         lastName: lastname,
         image: img,
     });
-    const [imagePreview, setImagePreview] = useState('');
+    // const [imagePreview, setImagePreview] = useState('');
     const [isPasswordDialogOpen, setIsPasswordDialogOpen] = useState(false);
     const [passwordForm, setPasswordForm] = useState({
         oldPassword: '',
@@ -36,7 +36,7 @@ const Settings = () => {
                 ...prev,
                 image: file
             }));
-            setImagePreview(URL.createObjectURL(file));
+            // setImagePreview(URL.createObjectURL(file));
         } else {
             setFormData(prev => ({
                 ...prev,
@@ -98,7 +98,7 @@ const Settings = () => {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.put(
+            await axios.put(
                 "http://localhost:3000/api/change-password",
                 {
                     oldPassword: passwordForm.oldPassword,

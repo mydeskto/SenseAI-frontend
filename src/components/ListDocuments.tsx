@@ -102,7 +102,7 @@ const ListDocuments: React.FC = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post(
+       await axios.post(
         "http://localhost:3000/api/chat/upload-context",
         formData,
         {
@@ -112,6 +112,7 @@ const ListDocuments: React.FC = () => {
           },
         }
       );
+    
 
       toast.success("Context file uploaded successfully.");
       setLoading(false);

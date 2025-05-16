@@ -88,60 +88,60 @@ const SignupForm: React.FC = () => {
     }
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
 
-    if (!acceptedTerms) {
-      toast.error("Please accept the terms and conditions");
-      setIsLoading(false);
-      return;
-    }
+  //   if (!acceptedTerms) {
+  //     toast.error("Please accept the terms and conditions");
+  //     setIsLoading(false);
+  //     return;
+  //   }
 
-    if (!hasUpperCase || !hasLowerCase || !hasNumber || !hasSpecialChar) {
-      toast.error("Please meet all password requirements");
-      setIsLoading(false);
-      return;
-    }
+  //   if (!hasUpperCase || !hasLowerCase || !hasNumber || !hasSpecialChar) {
+  //     toast.error("Please meet all password requirements");
+  //     setIsLoading(false);
+  //     return;
+  //   }
 
-    try {
-      const response = await fetch("http://localhost:3000/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          email,
-          password,
-        }),
-      });
+  //   try {
+  //     const response = await fetch("http://localhost:3000/api/register", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         firstName,
+  //         lastName,
+  //         email,
+  //         password,
+  //       }),
+  //     });
 
-      const data = await response.json();
-      console.log(data);
+  //     const data = await response.json();
+  //     console.log(data);
 
-      if (data.status === "ok") {
-        toast.success("Verification email sent. Please check your inbox.");
-        // Store user info in localStorage (except password)
-        localStorage.setItem("signupUser", JSON.stringify({
-          firstName,
-          lastName,
-          email
-        }));
-        setTimeout(() => {
-          navigate("/login");
-        }, 1500);
-      } else if (data.status === "error") {
-        setIsLoading(false);
-        toast.error(`Account Creation Failed ... ${data.error}`);
-      }
-    } catch (error) {
-      setIsLoading(false);
-      toast.error("An error occurred while registering. Please try again.");
-      console.error("Error during registration:", error);
-    }
-  }
+  //     if (data.status === "ok") {
+  //       toast.success("Verification email sent. Please check your inbox.");
+  //       // Store user info in localStorage (except password)
+  //       localStorage.setItem("signupUser", JSON.stringify({
+  //         firstName,
+  //         lastName,
+  //         email
+  //       }));
+  //       setTimeout(() => {
+  //         navigate("/login");
+  //       }, 1500);
+  //     } else if (data.status === "error") {
+  //       setIsLoading(false);
+  //       toast.error(`Account Creation Failed ... ${data.error}`);
+  //     }
+  //   } catch (error) {
+  //     setIsLoading(false);
+  //     toast.error("An error occurred while registering. Please try again.");
+  //     console.error("Error during registration:", error);
+  //   }
+  // }
 
   return (
     <div className="flex flex-col justify-start w-full lg:w-[50%] items-center min-h-screen bg-white py-4 px-2 overflow-y-auto">

@@ -1,4 +1,4 @@
-import { LayoutDashboard, MessageSquareText, User, Settings, File, Users, ClipboardList } from 'lucide-react';
+import { LayoutDashboard, MessageSquareText, User, Settings,  Users, ClipboardList } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
@@ -11,14 +11,14 @@ import {
 } from "@/components/ui/sidebar"
 import logo from "../assets/logo.png"
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useUserContext } from '@/context/UserContext';
 
 export function AppSidebar() {
 
   const navigate = useNavigate();
 
-  const { name ,email ,   img , admin } = useUserContext();
+  const { name ,email ,   img } = useUserContext();
 
 
   useEffect(() => {

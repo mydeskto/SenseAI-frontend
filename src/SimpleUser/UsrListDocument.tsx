@@ -77,7 +77,7 @@ const UsrListDocument: React.FC = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post(
+       await axios.post(
         "http://localhost:3000/api/chat/upload-context",
         formData,
         {

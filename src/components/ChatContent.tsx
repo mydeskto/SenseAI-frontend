@@ -47,9 +47,9 @@ interface ApiError {
   message: string;
 }
 
-interface MessageBoxWidths {
-  [key: number]: number;
-}
+// interface MessageBoxWidths {
+//   [key: number]: number;
+// }
 
 const ChatContent: React.FC = () => {
   const { conversationId: routeConversationId } = useParams<{ conversationId: any }>();
@@ -63,9 +63,9 @@ const ChatContent: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
   const [userN, setUserN] = useState<string>("");
-  const [userId, setUserId] = useState<string>("");
+  // const [userId, setUserId] = useState<string>("");
   const messageRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
-  const [messageBoxWidths, setMessageBoxWidths] = useState<MessageBoxWidths>({});
+  // const [messageBoxWidths, setMessageBoxWidths] = useState<MessageBoxWidths>({});
   const [jfile, setjFile] = useState<File | null>(null);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -131,7 +131,7 @@ const ChatContent: React.FC = () => {
       
     }
     setUserN(user);
-    setUserId(userId);
+    // setUserId(userId);
   }, []);
 
   useEffect(() => {
@@ -596,9 +596,11 @@ const ChatContent: React.FC = () => {
                             <span
                               className="flex flex-row items-center justify-between"
                               style={{
-                                width: messageBoxWidths[message.id]
-                                  ? `${messageBoxWidths[message.id]}px`
-                                  : "auto",
+                                width: 
+                                // messageBoxWidths[message.id]
+                                //   ? `${messageBoxWidths[message.id]}px`
+                                //   :
+                                   "auto",
                               }}
                             >
                               <span className="text-sm">{name}</span>
@@ -613,9 +615,11 @@ const ChatContent: React.FC = () => {
                             <span
                               className="flex flex-row gap-2 items-center justify-between"
                               style={{
-                                width: messageBoxWidths[message.id]
-                                  ? `${messageBoxWidths[message.id]}px`
-                                  : "auto",
+                                width:
+                                //  messageBoxWidths[message.id]
+                                //   ? `${messageBoxWidths[message.id]}px`
+                                //   : 
+                                  "auto",
                               }}
                             >
                               <span className="text-sm">

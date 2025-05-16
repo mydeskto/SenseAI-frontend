@@ -140,11 +140,11 @@ const OrgDashboard: React.FC = () => {
     //   }
     // };
 
-    type User = {
-      userType: 'usr' | 'adm' | 'mgm';
+    // type User = {
+    //   userType: 'usr' | 'adm' | 'mgm';
 
-      // Add more fields if needed
-    };
+    //   // Add more fields if needed
+    // };
 
 
   // Fetch conversations and count them

@@ -13,7 +13,7 @@ const Dashboard: React.FC = () => {
   const [conversationCount, setConversationCount] = useState<number>(0);
   const [UserCount, setUserCount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
-  const [userData, setUserData] = useState(null);
+  // const [userData, setUserData] = useState(null);
   const [simpleUserCount, setSimpleUserCount] = useState<number>(0);
   const [adminUserCount, setAdminUserCount] = useState<number>(0);
   const [managementUserCount, setManagementUserCount] = useState<number>(0);
@@ -62,7 +62,7 @@ const Dashboard: React.FC = () => {
                 }
             }
         );
-        setUserData(response.data);
+        // setUserData(response.data);
         console.log("User data:", response.data);
         setName(response.data.user.name);
         setEmail(response.data.user.email);

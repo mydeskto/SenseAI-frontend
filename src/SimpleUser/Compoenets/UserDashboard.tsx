@@ -4,7 +4,7 @@ import { BiConversation } from "react-icons/bi";
 import axios from "axios";
 import { useUserContext } from "@/context/UserContext";
 import Loader from "@/components/ui/loader";
-import { Users } from 'lucide-react';
+// import { Users } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
     const { setName ,setEmail , setLastName ,  setImg  } = useUserContext();
@@ -12,7 +12,7 @@ const Dashboard: React.FC = () => {
   const [documentCount, setDocumentCount] = useState<number>(0);
   const [conversationCount, setConversationCount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
-  const [userData, setUserData] = useState(null);
+  // const [userData, setUserData] = useState(null);
 
   // Fetch documents and count them
   const fetchDocuments = async () => {
@@ -58,7 +58,7 @@ const Dashboard: React.FC = () => {
                 }
             }
         );
-        setUserData(response.data);
+        // setUserData(response.data);
         console.log("User data:", response.data);
         setName(response.data.user.name);
         setEmail(response.data.user.email);
