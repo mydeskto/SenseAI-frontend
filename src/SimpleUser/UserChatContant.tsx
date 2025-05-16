@@ -19,7 +19,7 @@ import logo from "../assets/logo.png";
 // import profile from '../assets/profile-pic.jpg'
 // import { useLocation, useNavigate } from "react-router-dom";
 import { Switch } from "@headlessui/react"; // Add this import at the top
-import { MessageCircle } from "lucide-react";
+// import { MessageCircle } from "lucide-react";
 import type { FC } from "react";
 import type { ReactNode } from "react";
 // or any other theme
