@@ -8,7 +8,7 @@ import { PiScreencastDuotone } from "react-icons/pi";
 // import { PiEyesDuotone } from "react-icons/pi";
 import { IoIosMore } from "react-icons/io";
 import { IoMdSend } from "react-icons/io";
-import { FiDownload } from "react-icons/fi";
+import { FiArrowRight, FiDownload } from "react-icons/fi";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import jsPDF from "jspdf";
@@ -74,6 +74,7 @@ const ChatContent: React.FC = () => {
   const [url, setUrl] = useState<string>("");
   const [showUrlInput, setShowUrlInput] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(true);
+  const [showArrow, setShowArrow] = useState(false);
 
   const navigate = useNavigate();
 
@@ -989,11 +990,34 @@ const ChatContent: React.FC = () => {
         >
           <FiDownload /> Export Chat
         </button>
-        <MessageCircle
+       <button
+          type="button"
+          value=""
           onClick={() => {
             setOpen(!open);
           }}
-        />
+          onMouseEnter={() => setShowArrow(true)}
+          onMouseLeave={() => setShowArrow(false)}
+          className="bg-white w-10 h-10 sm:w-36 rounded-md flex justify-center items-center hover:bg-gray-300 border-1 border-gray-400 relative overflow-hidden transition-all duration-300"
+        >
+          <span
+            className={`transition-all duration-300 whitespace-nowrap ${showArrow ? 'opacity-0 scale-90' : 'opacity-100 scale-100'}`}
+            style={{ position: 'absolute' }}
+          >
+            chat history
+          </span>
+          <span
+            className={`transition-all duration-300 ${showArrow ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+            style={{ position: 'absolute' }}
+          >
+            <FiArrowRight className="text-xl" />
+          </span>
+          {/* <MessageCircle
+          onClick={() => {
+            setOpen(!open);
+          }}
+        /> */}
+       </button>
       </div>
       {showWelcome && messages.length === 0 ? (
         <div className="flex flex-col gap-3 sm:gap-4 justify-center items-center w-full h-[70%] flex-grow px-4">
